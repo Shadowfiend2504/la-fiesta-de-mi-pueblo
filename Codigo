@@ -1,0 +1,38 @@
+n = int(input("ingrese la cantidad de filas: "))
+
+def mcd(a,b):
+  """
+  encuentra el mcd de dos numeros utilizando el algoritmo de euclides
+  Args:
+    a(int) primer numero
+    b(int) segundo numero
+  Returns
+    int: el maximo comun divisor de a y b
+  """
+  while b!=0:
+    a, b = b, a % b
+  
+  return a
+
+for i in range(n):
+  lista_str = input("ingrese la lista de numeros ")
+  lista = lista_str.split(" ")
+  lista.pop(-1)
+  if len(lista) == 1:
+    puestos = int(lista[0])
+    mesas = 1
+  elif len(lista) == 2:
+    puestos = mcd(int(lista[0]),int(lista[1]))
+    sumatoria = int(lista[0]) + int(lista[1])
+    mesas = sumatoria/puestos
+  elif len(lista) == 3:
+    puestos = mcd(int(lista[0]),int(lista[1]))
+    puestos = mcd(puestos,int(lista[2]))
+    sumatoria = int(lista[0]) + int(lista[1]) + int(lista[2])
+    mesas = sumatoria/puestos
+  
+  if puestos == 1:
+    print("se ubicara una mesa para cada rango de edad")
+  else:
+    print("mesas:",mesas)
+    print("puestos: ", puestos)
